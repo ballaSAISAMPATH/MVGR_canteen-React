@@ -1,0 +1,35 @@
+.adminHomeNav{
+    padding: 1rem;
+}
+.adminHomeNavLink{
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    position: relative;
+    display: inline-block; 
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 5px 0; 
+    transition: color 0.3s ease;    
+}
+
+.adminHomeNavLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px; 
+  background-color: red;
+  transition: width 0.3s ease-in-out;
+}
+
+.adminHomeNavLink:hover::after {
+  width: 100%; 
+}
+
+.adminNavActive {
+  font-weight: bold; 
+  color: red;
+}
+

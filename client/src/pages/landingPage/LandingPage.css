@@ -1,0 +1,329 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+.landing_navbar_button{
+    border: none;
+    height: 3rem;
+    background-position: left center;
+    background-size: 0% 0%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right,rgb(249, 22, 22),#ff2dff);
+    transition: background-size 0.4s ease, color 0.4s ease;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    width: 9rem;
+    text-align: center;
+    display: flex;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+.landing_navbar_anchor{
+    text-decoration: none;
+    width: 9rem !important;
+}
+.landing_navbar_button:hover{
+    background-size: 100% 100%;
+    color: black;
+}
+.landing_page_navbar{
+    background-color: white;
+    border-bottom: 1px solid black;
+    z-index: 999;
+    
+}
+.sign_up_button{
+    height: 3rem;
+    background-color:rgb(255, 128, 37);
+    background-position: left center;
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right,rgb(255, 128, 37),rgb(255, 227, 172));
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    width: 7rem;
+    text-decoration: none;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    transition: background-size 0.4s ease, color 0.4s ease;
+}
+.sign_up_button:hover{
+    background-size: 100% 100%;
+    color: white;
+}
+
+
+.landingpage_welcome_content{
+    box-shadow:15px 15px 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #ff3131;
+    font-size: larger;
+    background-image: url("images/landingPage/image2.jpg");
+}
+.landing_page_content{
+    margin-top: 6rem; 
+    background-color: #e5e5f7;
+    background-attachment: fixed;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 800px ), repeating-linear-gradient( #facda755, #ffc596 );
+
+}
+.landingpage_welcome_content_textwrapper{
+    background-color: rgb(0, 0, 0,0.6);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.landingpage_aboutUs_content_text{
+    padding: 3rem;
+    margin: 1rem;
+    background-color: #dbf4c8;
+    box-shadow:  15px 15px 18px rgba(0, 0, 0, 0.8);
+}
+.landingpage_aboutUs_title{
+    text-align: center;
+    padding: 2rem;
+    /* margin: 10px 0; */
+    font-family: 'Times New Roman', Times, serif;
+}   
+.landingpage_aboutUs_content{
+    box-shadow:15px 15px 15px rgba(0, 0, 0, 0.7);
+    background-color: rgba(238, 153, 153, 0.3);
+    padding: 1rem;
+}
+.landingpage_aboutUs_content_image{
+    box-shadow:  15px 15px 18px rgba(0, 0, 0, 0.8);
+    margin: 1rem 0;
+}
+.landingpage_bestDishes_content{
+    display: flex;
+    padding: 1rem;
+    overflow-x:auto;
+    width: 100%;
+    gap: 3rem;
+}
+.landing_page_bestDishes_intro{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+    font-weight: 600;
+    font-family: cursive;
+    font-size: large;
+}
+.landingpage_bestDishes_images{
+    width:35vh;
+    height: 45vh;
+    flex-shrink: 0;
+    box-shadow:15px 15px 15px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s;
+}
+.landingpage_bestDishes_images:hover{
+    transform: scale(1.1);
+}
+.landingpage_bestDishes_images1{
+    background-image: url("images/landingPage/chickenbiryani.avif");
+    background-position: center;
+    background-size: cover;
+}
+
+.landingpage_bestDishes_images2{
+    background-image: url("images/landingPage/butterNaan.jpeg");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images3{
+    background-image: url("images/landingPage/fishcurry.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images4{
+    background-image: url("images/landingPage/dessert.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images5{
+    background-image: url("images/landingPage/chinese_chowmein.webp");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images6{
+    background-image: url("images/landingPage/chicken_wings.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images7{
+    background-image: url("images/landingPage/schezwan_fried_rice.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.landingpage_bestDishes_images_names{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0,0.5);
+    height: 100%;
+    text-align: center;
+    justify-content: end;
+    align-items:center;
+    font-size:1.7rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transition:background-color 0.5s, opacity 0.5s ;
+}
+.landingpage_bestDishes_images_names:hover{
+    opacity: 0;
+}
+
+/* LandingPage.css */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInUp{
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.slide-in-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+.slide-in-up {
+  animation: slideInUp 1s ease-out forwards;
+}
+.slide-in-down {
+  animation: slideInDown 1s ease-out forwards;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.landing_page_testimonials_and_reports{
+    width: 100%;
+    margin: 20px 0px;
+    height: 100%;
+   
+}
+.landing_page_testimonials{
+    background-color: #5c5cff;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+.landing_page_reports{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    padding :1rem;
+}
+.landing_page_contact_us{
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.landing_page_footer{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.landing_page_contact_us_title{
+    color: white;
+    font-weight: 400;
+}
+.landing_page_contact_us_section1{
+    border-right: 1px solid white;
+    padding-right:2rem ;
+}
+.landing_page_contact_us_section2{
+    border-right: 1px solid grey;
+    padding-right:2rem ;
+    
+   
+}
+.landing_page_contact_us_section3{
+     padding:0rem  2rem;
+}
+.landing_page_contact_us_section4{
+    color: grey;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+.landing_page_mvgrce_logo{
+    width: 40vh;
+    height: 9vh;
+}
+.landing_page_contact_us_section4_part1{
+    display: flex;
+    font-size: 1rem;
+    gap:2rem;
+}
+.landing_page_contact_us_section4_part2{
+    display: flex;
+    font-size: 1rem;
+    gap:2rem;
+}
+.landing_page_contact_us_section4_part2>*{
+    display: flex;
+    font-size: 1rem;
+    gap:2rem;
+    
+}
