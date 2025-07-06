@@ -1,19 +1,25 @@
 import React from 'react'
-
+import axios from "axios"
 export default function AdminMenuManagement() {
   async function adminMenuSubmit(e){
     e.preventDefault();
+    let file=e.target[4].files[0];
+    if (!file) return;
+    const form = new FormData();
+    form.append("file", file);
+    form.append("upload_preset", "menu_images");         
+    form.append("folder", "dishes");         
+    let response = await axios.post("https://api.cloudinary.com/v1_1/dl0zg9wq3/image/upload",form);
+    console.log(response);
+    
     let dish={
       dishName:e.target[0].value,
       dishType:e.target[1].value,
       DishPrice:e.target[2].value,
       DishDescription:e.target[3].value,
-      DishImage:e.target[4].value,
-
+      DishImageURL:response.data.url,
     }
     console.log(dish);
-    await axios.post();
-    
   }
   return (
     <div>
@@ -47,7 +53,6 @@ export default function AdminMenuManagement() {
           <input type="submit" className="btn btn-primary"/>   
         </form>
       </div>
-      
     </div>
   )
 }

@@ -4,6 +4,7 @@ const mongoose= require("mongoose");
 const app = express();
 const User =require("./models/users")
 const Admin=require("./models/admin")
+const Dish =require("./models/dishes")
 const databaseURL="mongodb://localhost:27017/database";
 require('dotenv').config();
 const port = process.env.REACT_APP_PORT || 3000;
@@ -68,3 +69,5 @@ app.post("/adminLogin",(req,res)=>{
         }
     
 })
+
+app.post()
