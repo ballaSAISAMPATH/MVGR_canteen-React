@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router'
 import "./AdminHome.css"
+import { useSelector } from 'react-redux'
 export default function AdminHome() {
+  const websiteLogo= useSelector((state)=>state.store.websiteLogo);
   return (
     <div>
       <nav className='adminHomeNav d-flex flex-column gap-2 flex-md-row col-12 justify-content-center align-items-center'>
-        <img className='adminHomeLogo col-3 col-md-2 col-lg-1 me-0 me-md-5' src="/images/rasoiii.png" alt="" />
+        <img className='adminHomeLogo col-3 col-md-2 col-lg-1 me-0 me-md-5' src={websiteLogo} alt="" />
         <div className="col-lg-1"></div>
         <NavLink className={({ isActive}) =>
         isActive ? "adminNavActive text-center col-12 col-md-2 adminHomeNavLink" : "text-center col-12 col-md-2 adminHomeNavLink"

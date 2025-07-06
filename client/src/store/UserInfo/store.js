@@ -10,7 +10,7 @@ export const counterSlice = createSlice({
     userSignUpDate:"",
     serverURL:"http://localhost:3000",
     adminLogged:false,
-    websiteLogo:"/images/rasoiii.png",
+    websiteLogo:"https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824171/rasoiii_jgydix.png",
   },
   reducers: {
     userIDSet: (state,action) => {        

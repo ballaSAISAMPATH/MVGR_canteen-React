@@ -67,7 +67,19 @@ app.post("/adminLogin",(req,res)=>{
         else{
             res.json({adminLogged:true});
         }
-    
 })
 
-app.post()
+app.post("/adminMenuDishUpload",async (req,res)=>{
+    console.log(req.body);
+    //let response = Dish.create(req.body)
+    let response =await Dish.find({DishName:req.body.DishName});
+    if(response.length>0){
+        return res.json({dishExists:true});
+
+    }
+    else {
+        await Dish.create(req.body);
+        return res.json({dishExists:false});
+    }
+    
+})

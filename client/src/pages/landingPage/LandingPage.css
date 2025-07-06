@@ -75,7 +75,7 @@ html {
     text-align: center;
     background-color: #ff3131;
     font-size: larger;
-    background-image: url("images/landingPage/image2.jpg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824438/image2_hcofn5.jpg");
 }
 .landing_page_content{
     margin-top: 6rem; 
@@ -140,38 +140,38 @@ html {
     transform: scale(1.1);
 }
 .landingpage_bestDishes_images1{
-    background-image: url("images/landingPage/chickenbiryani.avif");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824434/chickenbiryani_eaegrf.avif");
     background-position: center;
     background-size: cover;
 }
 
 .landingpage_bestDishes_images2{
-    background-image: url("images/landingPage/butterNaan.jpeg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824432/butterNaan_cayo3m.jpg");
     background-position: center;
     background-size: cover;
 }
 .landingpage_bestDishes_images3{
-    background-image: url("images/landingPage/fishcurry.jpg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824436/fishcurry_hvv76h.jpg");
     background-position: center;
     background-size: cover;
 }
 .landingpage_bestDishes_images4{
-    background-image: url("images/landingPage/dessert.jpg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824435/dessert_bfgwrs.jpg");
     background-position: center;
     background-size: cover;
 }
 .landingpage_bestDishes_images5{
-    background-image: url("images/landingPage/chinese_chowmein.webp");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824434/chinese_chowmein_bjemwj.webp");
     background-position: center;
     background-size: cover;
 }
 .landingpage_bestDishes_images6{
-    background-image: url("images/landingPage/chicken_wings.jpg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824433/chicken_wings_nfgeno.jpg");
     background-position: center;
     background-size: cover;
 }
 .landingpage_bestDishes_images7{
-    background-image: url("images/landingPage/schezwan_fried_rice.jpg");
+    background-image: url("https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824441/schezwan_fried_rice_g0mgv9.jpg");
     background-position: center;
     background-size: cover;
 }

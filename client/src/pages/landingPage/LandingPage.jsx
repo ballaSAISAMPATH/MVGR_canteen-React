@@ -80,7 +80,7 @@ export default function LandingPage() {
           The cozy yet elegant ambiance at RASOI creates the perfect setting for everything from family gatherings href romantic dinners. Our attentive staff ensures that every moment spent here is special, making us more than just a restaurant—it’s a destination where food, comfort, and happiness come together. Come and discover why RASOI is truly one of a kind.
 
         </div>
-        <img className='col-11 col-lg-4 mx-2 landingpage_aboutUs_content_image slide-on-scroll hidden 'data-animation="slide-in-up" src="images/admin_block.webp" alt="" />
+        <img className='col-11 col-lg-4 mx-2 landingpage_aboutUs_content_image slide-on-scroll hidden 'data-animation="slide-in-up" src="https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824172/admin_block_t8r8si.webp" alt="" />
       </div>
       <h2 id='landingPageBestDishes' className='landingpage_aboutUs_title'>BEST DISHES</h2>
       <div className='landing_page_bestDishes_intro'>~ Our best dishes, crafted with care,<br/>
@@ -238,7 +238,7 @@ export default function LandingPage() {
 
         </div>
         <div className='d-flex flex-column justify-content-center align-items-center'>
-              <img src= "images/MVGRCElogo.png" className='landing_page_mvgrce_logo' alt="MVGRCE" />
+              <img src= "https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824172/MVGRCElogo_vcxkln.png" className='landing_page_mvgrce_logo' alt="MVGRCE" />
               <div className='' style={{color:"white"}}>@copyright, all rights reserved.(2025)</div>
         </div>
       </footer>
