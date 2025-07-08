@@ -20,18 +20,17 @@ export default function AdminMenuManagement() {
       DishType:e.target[1].value,
       DishPrice:e.target[2].value,
       DishDescription:e.target[3].value,
-      DishImageURL:e.target[4].value//response.data.url,
+      DishImageURL:e.target[4].value,
     }
     console.log(dish);
-    let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
-    console.log(dbResponse.data.dishExists);
-    if(dbResponse.data.dishExists){
-      document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-danger fs-4' ><i>dish exits</i?</div>";
-      
+    let dishExists = await axios.post(URL+"/adminDishExists",{DishName:e.target[0].value});
+    if(dishExists){
+      let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
+      console.log(dbResponse.data.dishExists);
+      document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-success fs-4' ><i>dish added</i></div>";
     }
     else{
-       document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-success fs-4' ><i>dish added</i></div>";
-      
+      document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-danger fs-4' ><i>dish exits</i?</div>";    
     }
   }
   function adminMenuManagementInputOnChange(){
