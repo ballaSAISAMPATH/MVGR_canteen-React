@@ -7,6 +7,7 @@ const Schema = mongoose.Schema({
   DishImageURL:{type:String,required:true},
   DishRating:{type:String,default:0},
   DishUploadDate:{type:Date,default:Date.now},
+  DisplayDish:{type:Boolean,default:false},
 })
 const Dish = mongoose.model("Dish", Schema);
 module.exports=Dish;

@@ -6,31 +6,31 @@ export default function AdminMenuManagement() {
   
   async function adminMenuSubmit(e){
     e.preventDefault();
-    // let file=e.target[4].files[0];
-    // if (!file) return;
-    // const form = new FormData();
-    // form.append("file", file);
-    // form.append("upload_preset", "menu_images");         
-    // form.append("folder", "dishes");         
-    // let response = await axios.post("https://api.cloudinary.com/v1_1/dl0zg9wq3/image/upload",form);
-    // console.log(response.data.url);
     
-    let dish={
-      DishName:e.target[0].value,
-      DishType:e.target[1].value,
-      DishPrice:e.target[2].value,
-      DishDescription:e.target[3].value,
-      DishImageURL:e.target[4].value,
-    }
-    console.log(dish);
     let dishExists = await axios.post(URL+"/adminDishExists",{DishName:e.target[0].value});
-    if(dishExists){
+    console.log("dishExists : ",dishExists.data.dishExists);
+    if(!dishExists.data.dishExists){
+      let file=e.target[4].files[0];
+      if (!file) return;
+        const form = new FormData();
+        form.append("file", file);
+        form.append("upload_preset", "menu_images");         
+        form.append("folder", "dishes");         
+        let response = await axios.post("https://api.cloudinary.com/v1_1/dl0zg9wq3/image/upload",form);
+        console.log(response.data.url);
+        let dish={
+        DishName:e.target[0].value,
+        DishType:e.target[1].value,
+        DishPrice:e.target[2].value,
+        DishDescription:e.target[3].value,
+        DishImageURL:response.data.url,
+      }
       let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
-      console.log(dbResponse.data.dishExists);
+      console.log("dish updated :",dbResponse.data.dishCreated);
       document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-success fs-4' ><i>dish added</i></div>";
     }
     else{
-      document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-danger fs-4' ><i>dish exits</i?</div>";    
+      document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-danger fs-4' ><i>dish exists</i?</div>";    
     }
   }
   function adminMenuManagementInputOnChange(){
