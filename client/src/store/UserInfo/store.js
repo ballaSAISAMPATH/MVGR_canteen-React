@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import axios from 'axios';
 
 export const counterSlice = createSlice({
   name: 'store',
@@ -33,7 +32,7 @@ export const counterSlice = createSlice({
      setAdminLogged: (state,action) => {        
       state.adminLogged = action.payload;
     },
-    setMenuItems:async (state,action)=>{
+    setMenuItems:(state,action)=>{
       state.menuItemsList = action.payload;
       
     },
