@@ -80,7 +80,7 @@ export default function AdminMenuManagement() {
           <input type="submit" className="AdminMenuManagementDishUploadButton btn btn-primary"/>   
         </form>
       </div>
-          <div className='adminMenuControlSection d-flex flex-row flex-wrap col-12 col-md-7 col-lg-8 '>
+          <div className='adminMenuControlSection d-flex flex-row flex-wrap col-12 col-md-6 col-lg-8 '>
             <MenuCardsHolder />  
           </div>
       </div>
