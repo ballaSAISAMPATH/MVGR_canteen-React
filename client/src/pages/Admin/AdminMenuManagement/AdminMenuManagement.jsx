@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import {useSelector} from 'react-redux'
+import MenuCardsHolder from '../../../components/MenuCardsHolder/MenuCardsHolder';
 export default function AdminMenuManagement() {
   const URL = useSelector((state)=>state.store.serverURL);
   
@@ -38,10 +39,10 @@ export default function AdminMenuManagement() {
 
   }
   return (
-    <div>
+    <div className='d-flex flex-wrap  '>
       <div className='adminMenuManagementUploadSection'>
         <h4>Register a dish:</h4>
-        <form onSubmit={(event)=>{adminMenuSubmit(event)}} className='col-11 col-md-3 p-5' action="">
+        <form onSubmit={(event)=>{adminMenuSubmit(event)}} className='col-12 p-5' action="">
           <div className='form-floating'>
             <input onChange={()=>{adminMenuManagementInputOnChange()}} type="text" className="form-control" id='DishName' placeholder="Dish Name"/>
             <label htmlFor="DishName">dish name</label>
@@ -70,6 +71,11 @@ export default function AdminMenuManagement() {
           <div id="AdminMenuManagementDishExistsText"></div>
           <input type="submit" className="AdminMenuManagementDishUploadButton btn btn-primary"/>   
         </form>
+      </div>
+      <div className="adminMenuControlSection">
+          <div>
+            <MenuCardsHolder/>  
+          </div>
       </div>
     </div>
   )
