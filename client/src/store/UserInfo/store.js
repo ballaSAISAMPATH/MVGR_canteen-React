@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import axios from 'axios';
 
 export const counterSlice = createSlice({
   name: 'store',
@@ -11,6 +12,7 @@ export const counterSlice = createSlice({
     serverURL:"http://localhost:3000",
     adminLogged:false,
     websiteLogo:"https://res.cloudinary.com/dl0zg9wq3/image/upload/v1751824171/rasoiii_jgydix.png",
+    menuItemsList:[],
   },
   reducers: {
     userIDSet: (state,action) => {        
@@ -31,9 +33,13 @@ export const counterSlice = createSlice({
      setAdminLogged: (state,action) => {        
       state.adminLogged = action.payload;
     },
-
+    setMenuItems:async (state,action)=>{
+      state.menuItemsList = action.payload;
+      
+    },
+  
   },
 })
-export const { userIDSet,userMailSet,userNameSet,userRollNoSet,userSignupDateSet,setAdminLogged } = counterSlice.actions
+export const { userIDSet,userMailSet,userNameSet,userRollNoSet,userSignupDateSet,setAdminLogged,setMenuItems } = counterSlice.actions
 
 export default counterSlice.reducer

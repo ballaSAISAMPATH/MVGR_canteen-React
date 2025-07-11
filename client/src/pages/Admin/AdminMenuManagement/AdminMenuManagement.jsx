@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios"
-import {useSelector} from 'react-redux'
+import { setMenuItems } from '../../../store/UserInfo/store';
+import {useDispatch, useSelector} from 'react-redux'
 import MenuCardsHolder from '../../../components/MenuCardsHolder/MenuCardsHolder';
 export default function AdminMenuManagement() {
   const URL = useSelector((state)=>state.store.serverURL);
-  
+  const dispatch = useDispatch();
+  useEffect(()=>{
+       axios.get(URL+"/getMenuItems").then((responseList)=>{ 
+        console.log(responseList);
+      dispatch(setMenuItems(responseList));});
+     
+    })
   async function adminMenuSubmit(e){
     e.preventDefault();
     
@@ -28,6 +35,8 @@ export default function AdminMenuManagement() {
       }
       let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
       console.log("dish updated :",dbResponse.data.dishCreated);
+      const responseList = await axios.get(state.serverURL+"/getMenuItems");
+      dispatch(setMenuItems(responseList));
       document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-success fs-4' ><i>dish added</i></div>";
     }
     else{

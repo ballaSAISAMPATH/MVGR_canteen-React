@@ -95,3 +95,8 @@ app.post("/adminDishExists",async (req,res)=>{
         return res.json({dishExists:false});
     }
 })
+
+app.get("/getMenuItems",async(req,res)=>{
+    const response = await Dish.find();
+    res.json(response);
+})
