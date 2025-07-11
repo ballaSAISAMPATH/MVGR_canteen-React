@@ -8,10 +8,10 @@ export default function App() {
   const URL = useSelector((state)=>state.store.serverURL);
   useEffect(()=>{
      axios.get(URL+"/getMenuItems").then((responseList)=>{
-       console.log(responseList);
-       dispatch(setMenuItems(responseList));
+       console.log(responseList.data);
+       dispatch(setMenuItems(responseList.data));
       });
-  })
+  },[])
   return (
     <div>
       <LandingPage/>

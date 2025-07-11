@@ -6,12 +6,13 @@ import MenuCardsHolder from '../../../components/MenuCardsHolder/MenuCardsHolder
 export default function AdminMenuManagement() {
   const URL = useSelector((state)=>state.store.serverURL);
   const dispatch = useDispatch();
+  
   useEffect(()=>{
-       axios.get(URL+"/getMenuItems").then((responseList)=>{ 
-        console.log(responseList);
-      dispatch(setMenuItems(responseList));});
-     
-    })
+      axios.get(URL+"/getMenuItems").then((responseList)=>{ 
+      console.log(responseList.data);
+      dispatch(setMenuItems(responseList.data));});        
+    },[]);
+    
   async function adminMenuSubmit(e){
     e.preventDefault();
     
@@ -35,8 +36,6 @@ export default function AdminMenuManagement() {
       }
       let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
       console.log("dish updated :",dbResponse.data.dishCreated);
-      const responseList = await axios.get(state.serverURL+"/getMenuItems");
-      dispatch(setMenuItems(responseList));
       document.getElementById("AdminMenuManagementDishExistsText").innerHTML="<div class='text-success fs-4' ><i>dish added</i></div>";
     }
     else{
@@ -48,15 +47,15 @@ export default function AdminMenuManagement() {
 
   }
   return (
-    <div className='d-flex flex-wrap  '>
-      <div className='adminMenuManagementUploadSection'>
+    <div className='d-flex flex-row adminMenuManagementPageContainer   flex-wrap '>
+      <div className='adminMenuManagementUploadSection ms-2 col-12 col-md-5 col-lg-3'>
         <h4>Register a dish:</h4>
-        <form onSubmit={(event)=>{adminMenuSubmit(event)}} className='col-12 p-5' action="">
+        <form onSubmit={(event)=>{adminMenuSubmit(event)}} className='col-12 p-3' action="">
           <div className='form-floating'>
             <input onChange={()=>{adminMenuManagementInputOnChange()}} type="text" className="form-control" id='DishName' placeholder="Dish Name"/>
             <label htmlFor="DishName">dish name</label>
           </div>
-          <select class="form-select" aria-label="Default select example">
+          <select className="form-select" aria-label="Default select example">
             <option selected>select dish type</option>
             <option value="Appetizers">Appetizers</option>
             <option value="Main Course">Main Course</option>
@@ -81,11 +80,9 @@ export default function AdminMenuManagement() {
           <input type="submit" className="AdminMenuManagementDishUploadButton btn btn-primary"/>   
         </form>
       </div>
-      <div className="adminMenuControlSection">
-          <div>
-            <MenuCardsHolder/>  
+          <div className='adminMenuControlSection d-flex flex-row flex-wrap col-12 col-md-7 col-lg-8 '>
+            <MenuCardsHolder />  
           </div>
       </div>
-    </div>
   )
 }
