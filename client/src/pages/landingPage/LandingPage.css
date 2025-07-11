@@ -9,7 +9,7 @@ html {
     background-position: left center;
     background-size: 0% 0%;
     background-repeat: no-repeat;
-    background-image: linear-gradient(to right,rgb(249, 22, 22),#ff2dff);
+    background-image: linear-gradient(to right,hsl(0, 1%, 47%),#ffffff);
     transition: background-size 0.4s ease, color 0.4s ease;
     text-decoration: none;
     color: black;

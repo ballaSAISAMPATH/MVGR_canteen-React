@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors= require("cors");
 const mongoose= require("mongoose");
@@ -5,9 +6,8 @@ const app = express();
 const User =require("./models/users")
 const Admin=require("./models/admin")
 const Dish =require("./models/dishes")
-const databaseURL="mongodb://localhost:27017/database";
-require('dotenv').config();
 const port = process.env.REACT_APP_PORT || 3000;
+const databaseURL=process.env.REACT_APP_DATABASE_URL;
 app.use(cors());
 app.use(express.json());
 app.listen(port,()=>{
@@ -59,8 +59,10 @@ app.post("/clientLogin",async (req,res)=>{
 
     
 })
-app.post("/adminLogin",(req,res)=>{
-    let response = Admin.find({adminID:req.body.adminID,adminPassword:req.body.adminPassword,})
+app.post("/adminLogin",async (req,res)=>{
+    let response =await Admin.find({adminID:req.body.adminID,adminPassword:req.body.adminPassword})
+    console.log(response);
+    
         if(response.length==0){
             res.json({adminLogged:false});
         }
