@@ -1,12 +1,7 @@
-.adminMenuManagementUploadSection{
-    width: 400px ; 
+.adminMenuManagementPageContainer {
+  min-height: 100vh;
 }
-.adminMenuControlSection{
-    height: 100vh;
-    
-    overflow-y: scroll;
-}
-.adminMenuManagementPageContainer{
-    height: 100vh;
-    width: 100vw;
+
+.adminMenuControlSection {
+  overflow-y: auto;
 }
