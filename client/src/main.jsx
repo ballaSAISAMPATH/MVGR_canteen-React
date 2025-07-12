@@ -11,6 +11,7 @@ import AdminFeedbackManagement from './pages/Admin/AdminFeedbackManagement/Admin
 import AdminOrderManagement from './pages/Admin/AdminOrderManagement/AdminOrderManagement.jsx';
 import AdminHome from './pages/Admin/AdminHome/AdminHome.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import { createBrowserRouter,Navigate,RouterProvider } from 'react-router';
 import store from './store/storeContext.js';
 import { Provider, useSelector } from 'react-redux'
