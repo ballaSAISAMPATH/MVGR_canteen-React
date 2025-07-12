@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function MenuCard({ individual }) {
   const isAvailable = individual.Available !== false;
-
-  return (
+    
+return (
+  <div>
     <div
-      className="card border-0 m-3 menuItemCard"
-      style={{
+        className="card border-0 m-2 menuItemCard"
+        style={{
         width: '20rem',
         borderRadius: '1rem',
         overflow: 'hidden',
         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
         backgroundColor: '#fff',
-      }}
-    >
+        }}
+        >
       <div style={{ position: 'relative' }}>
         <img
           src={individual.DishImageURL}
@@ -72,7 +73,17 @@ export default function MenuCard({ individual }) {
             Order Now
           </button>
         </div>
+
+
       </div>
     </div>
+
+    
+  </div>
+   
+
+
+
+
   );
 }
