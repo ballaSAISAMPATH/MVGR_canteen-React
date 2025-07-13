@@ -107,7 +107,6 @@ return (
                 <button className="btn btn-outline-primary w-50 rounded-pill fw-medium">
                   stage
                 </button>
-              
               }
             </div>
           
