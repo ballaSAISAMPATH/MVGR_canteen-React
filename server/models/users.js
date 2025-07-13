@@ -1,5 +1,5 @@
-const mongoose= require("mongoose");
-const user = mongoose.Schema({
+import { Schema, model } from "mongoose";
+const user = Schema({
     name:{type:String,required:true},
     mail:{type:String,required:true},
     rollNo:{type:String,required:true},
@@ -7,5 +7,5 @@ const user = mongoose.Schema({
     date:{type:Date,default:Date.now}
 })
 
-const User= mongoose.model("Users",user);
-module.exports=User;
+const User= model("Users",user);
+export default User;
