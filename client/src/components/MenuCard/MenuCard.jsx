@@ -1,10 +1,35 @@
 import React, { useState } from 'react';
-
+import { useEffect } from 'react';
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import "./MenuCard.css"
 export default function MenuCard({ individual }) {
   const isAvailable = individual.Available !== false;
-    
+  const [dishTypeColor,setDishTypeColor]=useState("");
+  
+   useEffect(() => {
+    switch (individual.DishType) {
+      case "Appetizers":
+        setDishTypeColor("#6f42c1"); 
+        break;
+      case "Main Course":
+        setDishTypeColor("#dc3545"); 
+        break;
+      case "Side Dishes":
+        setDishTypeColor("#198754");
+        break;
+      case "Desserts":
+        setDishTypeColor("#2950fdff");
+        break;
+      case "Beverages":
+        setDishTypeColor("#693a01ff");
+        break;
+      default:
+        setDishTypeColor("#6c757d"); 
+    }
+  }, [individual.DishType]);
 return (
-  <div>
+  <div className=''>
     <div
         className="card border-0 m-2 menuItemCard"
         style={{
@@ -12,7 +37,7 @@ return (
         borderRadius: '1rem',
         overflow: 'hidden',
         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-        backgroundColor: '#fff',
+        backgroundColor: '#ecececff',
         }}
         >
       <div style={{ position: 'relative' }}>
@@ -24,8 +49,8 @@ return (
         />
 
         <span
-          className="badge bg-danger position-absolute top-0 start-0 m-2 px-3 py-1"
-          style={{ fontSize: '0.75rem', borderRadius: '0.5rem' }}
+          className="badge position-absolute top-0 start-0 m-2 px-3 py-1"
+          style={{ fontSize: '0.75rem', borderRadius: '0.5rem',backgroundColor:dishTypeColor }}
         >
           {individual.DishType}
         </span>
@@ -64,15 +89,40 @@ return (
         >
           {individual.DishDescription}
         </p>
+          {sessionStorage.getItem("adminExists")
+          ?
+            <div className="d-flex justify-content-start gap-2">
+              <button className="btn btn-warning w-25 rounded-pill fw-medium">
+               <FaEdit/>
+              </button>
+              <button className="btn btn-outline-danger w-25 rounded-pill fw-medium">
+                <RiDeleteBin6Fill/>
+              </button>
+              {isAvailable?
+                <button className="btn btn-outline-secondary w-50 rounded-pill fw-medium">
+                  unstage
+                </button>
+              
+              :
+                <button className="btn btn-outline-primary w-50 rounded-pill fw-medium">
+                  stage
+                </button>
+              
+              }
+            </div>
+          
+          :
+            <div className="d-flex justify-content-between gap-2">
+              <button className="btn btn-outline-warning w-50 rounded-pill fw-medium">
+                Add to Cart
+              </button>
+              <button className="btn btn-primary w-50 rounded-pill fw-medium">
+                Order Now
+              </button>
+            </div>
 
-        <div className="d-flex justify-content-between gap-2">
-          <button className="btn btn-outline-warning w-50 rounded-pill fw-medium">
-            Add to Cart
-          </button>
-          <button className="btn btn-primary w-50 rounded-pill fw-medium">
-            Order Now
-          </button>
-        </div>
+
+          }
 
 
       </div>

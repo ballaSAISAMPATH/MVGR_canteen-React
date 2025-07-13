@@ -1,13 +1,13 @@
-.adminMenuManagementPageContainer {
-}
-
 .adminMenuControlSection {
-  
+  height: 88vh; 
   overflow-y: auto;
 }
-.adminMenuManagementUploadSection{
-  background-color: hwb(0 87% 13%);
 
+.adminMenuManagementUploadSection{
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 1rem 0.5rem;
 }
 .adminNewDishRegisterTitle{
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

@@ -2,8 +2,12 @@
   transform: scale(1.03);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
-.card {
+.menuItemCard {
   box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+.menuItemCard:hover{
+  transform: scale(1.02);
 }
 
 
