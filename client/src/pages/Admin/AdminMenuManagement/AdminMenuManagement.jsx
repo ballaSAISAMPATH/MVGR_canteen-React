@@ -1,46 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import { setMenuItems } from '../../../store/UserInfo/store';
 import {useDispatch, useSelector} from 'react-redux'
-import Toaster from '../../../components/Toast';
 import MenuCardsHolder from '../../../components/MenuCardsHolder/MenuCardsHolder';
-import "./AdminMenuManagement.css"
-
+import "./AdminMenuManagement.css";
+import { toast } from 'react-toastify';
 export default function AdminMenuManagement() {
   const URL = useSelector((state)=>state.store.serverURL);
   const [dishUploadloading,setDishUploadLoading] = useState(false);
   const dispatch = useDispatch();
-  const [DishUploaded, setDishUploaded] = useState(false);
-  const [dishExistsMsg,setDishExistsMsg] = useState(false);
-  const [recentUploadedDishName,setRecentUploadedDishName] = useState("");
-  const [recentUploadedDishurl,setRecentUploadedDishurl] = useState("");
 
   useEffect(()=>{
       axios.get(URL+"/getMenuItems").then((responseList)=>{ 
       console.log(responseList.data);
       dispatch(setMenuItems(responseList.data));});        
-    });
 
-    async function handleDishDelete(dishID){{
+    },[]);
+
+    async function handleDishDelete(dishID,dishName){{
       console.log(dishID);
-      const response =await axios.delete(URL+"/deleteDish",dishID);
-      //console.log(response);
+      const response =await axios.delete(URL+"/deleteDish",{data:{dishID:dishID}});
+      console.log("dishDeleted",response.data.dishDeleted);
+      if(response.data.dishDeleted){
+        toast.success(dishName+" removed from database successfully");
+      }
+      else{
+        toast.error(dishName+" deletion failed");
+      }
+      const menuList = await axios.get(URL+"/getMenuItems");
+      dispatch(setMenuItems(menuList.data));
     }}
 
-    //toasts
-    const dishUploadToastShow=()=>{
-      setDishUploaded(!DishUploaded);
-      console.log("dishupload" +DishUploaded);
-      
-    }
-    //toasts
-    const dishExistsToastShow=()=>{
-      setDishExistsMsg(!dishExistsMsg);
-      console.log("dishExists" +dishExistsMsg);
-      
-    }
     //on dish upload form submit
-  async function adminMenuSubmit(e){
+  async function dishUpload(e){
     e.preventDefault();
     setDishUploadLoading(true);
     //check for dish existence
@@ -48,7 +40,6 @@ export default function AdminMenuManagement() {
     console.log("dishExists : ",dishExists.data.dishExists);
     if(dishExists.data.dishExists){
       setDishUploadLoading(false);
-      setDishExistsMsg(true);
     }
     if(!dishExists.data.dishExists){
       let file=e.target[4].files[0];
@@ -67,15 +58,37 @@ export default function AdminMenuManagement() {
         DishDescription:e.target[3].value,
         DishImageURL:response.data.url,
       }
-      setRecentUploadedDishName(e.target[0].value);
-      setRecentUploadedDishurl(response.data.url);
       //dish upload
-      let dbResponse = await axios.post(URL+"/dishUpload",dish)
+      let dbResponse = await axios.post(URL+"/dishUpload",dish);
+      
+      toast.success(
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={response.data.url}
+          alt="dish"
+          height="40"
+          width="40"
+          style={{ marginRight: "10px", borderRadius: "5px" }}
+        />
+        <div> 
+          <div style={{ fontWeight: "bold", color: "white" }}>Dish Uploaded</div>
+          <div style={{ color: "white" }}>{e.target[0].value}</div>
+        </div>
+      </div>,
+      {
+        icon: false,
+        style: { background: "#198754", color: "#fff" },
+        autoClose: 5000,
+        position: "bottom-right",
+      }
+    );
       setDishUploadLoading(false);
-      setDishUploaded(true);
       //obtaining menulist
       const menuList = await axios.get(URL+"/getMenuItems");
       dispatch(setMenuItems(menuList.data));
+    }
+    else{
+      toast.error(e.target[0].value+"  already exists.")
     }
   }
 
@@ -83,7 +96,7 @@ export default function AdminMenuManagement() {
     <div className='d-flex flex-row flex-wrap col-12 adminMenuManagementPageContainer  '>
       <div className='adminMenuManagementUploadSection border-end border-1 border-dark-subtle col-12 col-lg-3'>
         <h4 className='adminNewDishRegisterTitle text-center pt-3'>Register a dish:</h4>
-        <form onSubmit={(event)=>{adminMenuSubmit(event)}} className='col-12 p-3 d-flex flex-column gap-3' action="">
+        <form onSubmit={(event)=>{dishUpload(event)}} className='col-12 p-3 d-flex flex-column gap-3' action="">
           <div className='form-floating'>
             <input type="text" className="form-control" id='DishName' placeholder="Dish Name" required/>
             <label htmlFor="DishName">dish name</label>
@@ -126,25 +139,6 @@ export default function AdminMenuManagement() {
         <MenuCardsHolder handleDishDelete={handleDishDelete} className='adminMenuControlSection d-flex justify-content-center flex-wrap col-12 col-lg-9  '/>  
       <div className='col-12 text-center text-dark py-5'>&lt;--- end of the list ---&gt;</div>
       </div>
-
-    <Toaster
-    show={DishUploaded} 
-    toggleShow={dishUploadToastShow}
-    message = "Added into the Database successfully <FaCheck className='mb-1'/>"
-    color="success"
-    imgURL={recentUploadedDishurl}
-    header={recentUploadedDishName}
-    />
-
-    <Toaster
-    show={dishExistsMsg} 
-    toggleShow={dishExistsToastShow}
-    message = "dish exists already."
-    color="danger"
-    imgURL="..."
-    header="new notification"
-    />
-            
 </div>
   )
 }

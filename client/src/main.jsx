@@ -10,6 +10,8 @@ import AdminMenuManagement from './pages/Admin/AdminMenuManagement/AdminMenuMana
 import AdminFeedbackManagement from './pages/Admin/AdminFeedbackManagement/AdminFeedbackManagement.jsx';
 import AdminOrderManagement from './pages/Admin/AdminOrderManagement/AdminOrderManagement.jsx';
 import AdminHome from './pages/Admin/AdminHome/AdminHome.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 import { createBrowserRouter,Navigate,RouterProvider } from 'react-router';
@@ -58,6 +60,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider  store={store}>
       <RouterProvider router={router} />
+       <ToastContainer position="bottom-right" autoClose={5000} theme='colored'/>
     </Provider>
   </StrictMode>
 );
