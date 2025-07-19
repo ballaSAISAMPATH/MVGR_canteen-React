@@ -3,7 +3,7 @@ import MenuCard from '../MenuCard/MenuCard'
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { use } from 'react';
-export default function MenuCardsHolder() {
+export default function MenuCardsHolder({handleDishDelete}) {
   const menuItemsList = useSelector((state)=>state.store.menuItemsList);
 
   if(menuItemsList.length==0){
@@ -14,7 +14,11 @@ export default function MenuCardsHolder() {
       menuItemsList?
       menuItemsList.map((individual,index)=>{
         
-        return <div key={individual._id}><MenuCard  individual={individual} index={index}/></div>
+        return <div key={individual._id}>
+          <MenuCard 
+            handleDishDelete={handleDishDelete} 
+            individual={individual}
+            index={index}/></div>
       })
       :""
       

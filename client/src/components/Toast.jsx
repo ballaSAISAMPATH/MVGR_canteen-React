@@ -18,7 +18,7 @@ export default function Toaster({show,toggleShow,imgURL="...",header="",message,
         position="bottom-end"
         style={{ zIndex: 1 }}
       >
-        <Toast show={view} onClose={toggle} bg={color} delay={3000} autohide>
+        <Toast show={view} onClose={toggle} bg={color} delay={5000} autohide>
           <Toast.Header className=''>
             <img height="50px"
               src={imgURL}
