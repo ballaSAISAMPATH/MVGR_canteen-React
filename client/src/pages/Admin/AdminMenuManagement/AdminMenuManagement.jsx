@@ -20,6 +20,13 @@ export default function AdminMenuManagement() {
       console.log(responseList.data);
       dispatch(setMenuItems(responseList.data));});        
     });
+
+    async function handleDishDelete(dishID){{
+      console.log(dishID);
+      const response =await axios.delete(URL+"/deleteDish",dishID);
+      //console.log(response);
+    }}
+
     //toasts
     const dishUploadToastShow=()=>{
       setDishUploaded(!DishUploaded);
@@ -37,7 +44,7 @@ export default function AdminMenuManagement() {
     e.preventDefault();
     setDishUploadLoading(true);
     //check for dish existence
-    let dishExists = await axios.post(URL+"/adminDishExists",{DishName:e.target[0].value});
+    let dishExists = await axios.post(URL+"/dishExists",{DishName:e.target[0].value});
     console.log("dishExists : ",dishExists.data.dishExists);
     if(dishExists.data.dishExists){
       setDishUploadLoading(false);
@@ -63,7 +70,7 @@ export default function AdminMenuManagement() {
       setRecentUploadedDishName(e.target[0].value);
       setRecentUploadedDishurl(response.data.url);
       //dish upload
-      let dbResponse = await axios.post(URL+"/adminMenuDishUpload",dish)
+      let dbResponse = await axios.post(URL+"/dishUpload",dish)
       setDishUploadLoading(false);
       setDishUploaded(true);
       //obtaining menulist
@@ -116,7 +123,7 @@ export default function AdminMenuManagement() {
         </form>
       </div>  
       <div className='adminMenuControlSection d-flex justify-content-center flex-wrap col-12 col-lg-9  '>
-        <MenuCardsHolder className='adminMenuControlSection d-flex justify-content-center flex-wrap col-12 col-lg-9  '/>  
+        <MenuCardsHolder handleDishDelete={handleDishDelete} className='adminMenuControlSection d-flex justify-content-center flex-wrap col-12 col-lg-9  '/>  
       <div className='col-12 text-center text-dark py-5'>&lt;--- end of the list ---&gt;</div>
       </div>
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import "./MenuCard.css"
-export default function MenuCard({ individual }) {
+export default function MenuCard({ individual,handleDishDelete }) {
   const isAvailable = individual.Available !== false;
   const [dishTypeColor,setDishTypeColor]=useState("");
   
@@ -95,7 +95,7 @@ return (
               <button className="btn btn-warning w-25 rounded-pill fw-medium">
                <FaEdit/>
               </button>
-              <button className="btn btn-outline-danger w-25 rounded-pill fw-medium">
+              <button onClick={()=>handleDishDelete(individual._id)} className="btn btn-outline-danger w-25 rounded-pill fw-medium">
                 <RiDeleteBin6Fill/>
               </button>
               {isAvailable?
