@@ -95,7 +95,7 @@ return (
               <button className="btn btn-warning w-25 rounded-pill fw-medium">
                <FaEdit/>
               </button>
-              <button onClick={()=>handleDishDelete(individual._id)} className="btn btn-outline-danger w-25 rounded-pill fw-medium">
+              <button onClick={()=>handleDishDelete(individual._id,individual.DishName)} className="btn btn-outline-danger w-25 rounded-pill fw-medium">
                 <RiDeleteBin6Fill/>
               </button>
               {isAvailable?
